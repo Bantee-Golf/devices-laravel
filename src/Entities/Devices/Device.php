@@ -1,6 +1,5 @@
 <?php
 
-
 namespace EMedia\Devices\Entities\Devices;
 
 
@@ -86,9 +85,10 @@ class Device extends Model
 	public static function boot()
 	{
 		parent::boot();
+
 		self::creating(function ($model) {
 			$model->access_token = self::newUniqueToken('access_token');
-			$model->access_token_expires_at = Carbon::now()->addDays($this->getDefaultTokenExpiryDays());
+			$model->access_token_expires_at = Carbon::now()->addDays($model->getDefaultTokenExpiryDays());
 		});
 	}
 

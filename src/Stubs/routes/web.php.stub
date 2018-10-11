@@ -2,7 +2,6 @@
 Route::group(['prefix' => 'manage', 'middleware' => ['web', 'auth'], 'as' => 'manage.'], function()
 {
 	Route::resource('devices', '\EMedia\Devices\Http\Controllers\Admin\DevicesController')
-		 ->only('index', 'show', 'destroy')
-		 ->name('devices');
+		 ->only('index', 'show', 'destroy');
 });
 // End Devices Routes
