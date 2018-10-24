@@ -22,6 +22,7 @@ class DevicesTableSeeder extends Seeder
 				'device_id' => 332211,
 				'device_type' => 'android',
 				'device_push_token' => '500500500500500',
+				'user_id' => 2,
 			]
 		];
 

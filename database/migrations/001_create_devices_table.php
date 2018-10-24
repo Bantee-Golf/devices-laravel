@@ -16,10 +16,11 @@ class CreateDevicesTable extends Migration
             $table->increments('id');
             $table->string('device_id');
             $table->string('device_type');
-            $table->string('device_push_token')->nullable();
+            $table->text('device_push_token')->nullable();
             $table->integer('user_id')->nullable()->references('id')->on('users');
-            $table->string('access_token');
+            $table->string('access_token')->nullable();
 			$table->dateTime('access_token_expires_at')->nullable();
+			$table->unique(['device_id', 'device_type']);
             $table->timestamps();
         });
     }

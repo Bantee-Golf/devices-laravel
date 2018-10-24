@@ -79,3 +79,9 @@ Use device authentication to validate token as a middleware, add below line to `
 ```
 '\EMedia\Devices\Middleware\DeviceAuthMiddleware::class,'
 ```
+
+## Important Notes
+
+#### POST/PUT Requests
+
+Due to [Symfony and Laravel limitations](https://github.com/laravel/framework/issues/13457#issuecomment-239451567), you cannot send binary data (such as images) to a PUT endpoint. So either use a POST request with `_method=put` or don't use PUT requests with binary data.

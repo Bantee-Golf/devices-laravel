@@ -53,7 +53,13 @@ class Device extends Model
 
 	public function user()
 	{
-		return $this->belongsTo('\App\User');
+		$userClass = config('auth.providers.users.model');
+
+		if ($userClass) {
+			return $this->belongsTo($userClass);
+		}
+
+		return null;
 	}
 
 	/**
@@ -65,6 +71,19 @@ class Device extends Model
 	public function setDeviceTypeAttribute($value)
 	{
 		$this->attributes['device_type'] = strtolower($value);
+	}
+
+	/**
+	 *
+	 * Refresh the current access token
+	 *
+	 * @throws \EMedia\Helpers\Exceptions\Auth\TokenGenerationException
+	 */
+	public function refreshAccessToken()
+	{
+		$this->attributes['access_token'] = self::newUniqueToken('access_token');
+		$this->attributes['access_token_expires_at'] = Carbon::now()->addDays($this->getDefaultTokenExpiryDays());
+		$this->save();
 	}
 
 	/**
