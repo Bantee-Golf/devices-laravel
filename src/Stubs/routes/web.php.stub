@@ -1,5 +1,5 @@
 // Start Devices Routes
-Route::group(['prefix' => 'manage', 'middleware' => ['web', 'auth'], 'as' => 'manage.'], function()
+Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'auth.acl:roles[super-admin|admin]'], 'as' => 'manage.'], function()
 {
 	Route::resource('devices', '\EMedia\Devices\Http\Controllers\Admin\DevicesController')
 		 ->only('index', 'show', 'destroy');

@@ -17,11 +17,13 @@ class DeviceAuthServiceProvider extends ServiceProvider
 	{
 		$this->loadViewsFrom(__DIR__ . '/../resources/views', 'devices');
 
-		$menuItem = (new MenuItem())->setText('Devices')
-									->setResource('manage.devices.index')
-									->setClass('fas fa-mobile-alt');
+		if (\Illuminate\Support\Facades\Route::has('manage.devices.index')) {
+			$menuItem = (new MenuItem())->setText('Devices')
+										->setResource('manage.devices.index')
+										->setClass('fas fa-mobile-alt');
 
-		MenuBar::add($menuItem, 'sidebar.manage');
+			MenuBar::add($menuItem, 'sidebar.manage');
+		}
 	}
 
 
