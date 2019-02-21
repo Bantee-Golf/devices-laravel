@@ -24,7 +24,7 @@
                 <a href="{{ entity_resource_path() . '/' . $item->id }}">{{ $item->device_id }}</a>
             </td>
             <td>{{ $item->device_type }}</td>
-            <td>{{ $item->device_push_token }}</td>
+            <td style="word-break: break-word">{{ $item->device_push_token }}</td>
             <td>
                 @if ($item->user)
                     {{ $item->user->full_name }}
