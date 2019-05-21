@@ -23,7 +23,7 @@ class DevicesRepository extends BaseRepository
 	 *
 	 * @return Device|mixed
 	 */
-	public function createOrUpdateByIDAndType($data, $userID)
+	public function createOrUpdateByIDAndType($data, $userID = null)
 	{
 		if (empty($data['device_id']) || empty($data['device_type'])) {
 			throw new \InvalidArgumentException("device_id and device_type are required parameters");
@@ -34,15 +34,17 @@ class DevicesRepository extends BaseRepository
 						->where('device_type', $data['device_type'])
 						->first();
 
-		// assign the device to this user
-		// just in case if the device is given to a new user
-		if ($device) {
-			$device->user()->associate($userID);
-			$device->refreshAccessToken();
-			return $device;
+		if ($userID) {
+			// assign the device to this user
+			// just in case if the device is given to a new user
+			if ($device) {
+				$device->user()->associate($userID);
+				$device->refreshAccessToken();
+				return $device;
+			}
+			$data['user_id'] = $userID;
 		}
 
-		$data['user_id'] = $userID;
 		return $this->create($data);
 	}
 
@@ -78,6 +80,13 @@ class DevicesRepository extends BaseRepository
 	public function getByUserId($userId)
 	{
 		return Device::where('user_id', $userId)->get();
+	}
+
+	public function getByIdAndType($deviceId, $deviceType)
+	{
+		return \App\Entities\Devices\Device::where('device_id', $deviceId)
+										   ->where('device_type', $deviceType)
+										   ->first();
 	}
 
 	/**
