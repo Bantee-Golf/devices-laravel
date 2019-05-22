@@ -34,14 +34,17 @@ class DevicesRepository extends BaseRepository
 						->where('device_type', $data['device_type'])
 						->first();
 
-		if ($userID) {
+		if ($device) {
 			// assign the device to this user
 			// just in case if the device is given to a new user
-			if ($device) {
+			if ($userID) {
 				$device->user()->associate($userID);
-				$device->refreshAccessToken();
-				return $device;
 			}
+			$device->refreshAccessToken();
+			return $device;
+		}
+
+		if ($userID) {
 			$data['user_id'] = $userID;
 		}
 
