@@ -13,7 +13,7 @@ class DevicesController extends Controller
 	/**
 	 * @var DevicesRepository
 	 */
-	private $devicesRepo;
+	protected $devicesRepo;
 
 	public function __construct(DevicesRepository $devicesRepo)
 	{
