@@ -14,7 +14,7 @@
 @section('content')
     @include('oxygen::dashboard.partials.table-allItems', [
         'tableHeader' => [
-            'Device ID', 'Device Type', 'Push Token', 'User', 'Actions'
+            'Device ID', 'Device Type', 'Push Token', 'Latest IP', 'User', 'Actions'
         ]
     ])
 
@@ -25,6 +25,7 @@
             </td>
             <td>{{ $item->device_type }}</td>
             <td style="word-break: break-word">{{ $item->device_push_token }}</td>
+            <td>{{ $item->latest_ip_address }}</td>
             <td>
                 @if ($item->user)
                     {{ $item->user->full_name }}

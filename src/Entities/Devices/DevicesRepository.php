@@ -29,6 +29,8 @@ class DevicesRepository extends BaseRepository
 			throw new \InvalidArgumentException("device_id and device_type are required parameters");
 		}
 
+		$request = request();
+
 		/** @var Device $device */
 		$device = Device::where('device_id', $data['device_id'])
 						->where('device_type', $data['device_type'])
@@ -40,6 +42,7 @@ class DevicesRepository extends BaseRepository
 			if ($userID) {
 				$device->user()->associate($userID);
 			}
+			if ($request) $device->latest_ip_address = request()->ip();
 			$device->refreshAccessToken();
 			return $device;
 		}
@@ -47,6 +50,8 @@ class DevicesRepository extends BaseRepository
 		if ($userID) {
 			$data['user_id'] = $userID;
 		}
+
+		if ($request) $data['latest_ip_address'] = request()->ip();
 
 		return $this->create($data);
 	}

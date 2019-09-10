@@ -21,11 +21,13 @@ class Device extends Model
 		'device_type',
 		'device_push_token',
 		'user_id',
+		'latest_ip_address',
 	];
 
 	protected $searchable = [
 		'device_id',
 		'device_push_token',
+		'latest_ip_address',
 	];
 
 	protected $dates = [
