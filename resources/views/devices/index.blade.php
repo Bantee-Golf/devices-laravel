@@ -12,10 +12,13 @@
 @stop
 
 @section('content')
+	<?php $tableHeader = ['Device ID', 'Device Type', 'Push Token', 'Latest IP', 'User', 'Actions'] ?>
+    @if (has_feature('notifications.send-device-push-notifications'))
+        <?php $tableHeader = ['Device ID', 'Device Type', 'Push Token', 'Latest IP', 'User', 'Notifications', 'Actions'] ?>
+    @endif
+
     @include('oxygen::dashboard.partials.table-allItems', [
-        'tableHeader' => [
-            'Device ID', 'Device Type', 'Push Token', 'Latest IP', 'User', 'Actions'
-        ]
+        'tableHeader' => [ $tableHeader ]
     ])
 
     @foreach ($allItems as $item)
@@ -31,6 +34,11 @@
                     {{ $item->user->full_name }}
                 @endif
             </td>
+            @if (has_feature('notifications.send-device-push-notifications'))
+                <td>
+                    <a href="{{ route('manage.push-notifications.create', ['device_id' => $item->id]) }}" class="btn btn-warning">Send Notification</a>
+                </td>
+            @endif
             <td>
                 <form action="{{ entity_resource_path() . '/' . $item->id }}" method="POST" class="form form-inline js-confirm">
                     {{ method_field('delete') }}
