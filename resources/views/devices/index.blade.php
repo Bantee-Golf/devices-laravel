@@ -18,7 +18,7 @@
     @endif
 
     @include('oxygen::dashboard.partials.table-allItems', [
-        'tableHeader' => [ $tableHeader ]
+        'tableHeader' => $tableHeader
     ])
 
     @foreach ($allItems as $item)
