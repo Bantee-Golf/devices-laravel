@@ -18,9 +18,9 @@
     ],
     "require": {
         "php": "^7.0",
-        "illuminate/support": "^5.7",
-        "illuminate/database": "^5.7",
-        "emedia/quick-data-laravel": "~2.0"
+        "illuminate/support": "^5.7|^6.0",
+        "illuminate/database": "^5.7|^6.0",
+        "emedia/quick-data-laravel": "~2.0|~3.0"
     },
     "license": "proprietary",
     "authors": [

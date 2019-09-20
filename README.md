@@ -1,4 +1,4 @@
-# Device-Authentication Handling Package for Laravel 5.7+
+# Device-Authentication Handling Package for Laravel 5.7+ / 6.0
 
 This adds device authentication handling capability on a laravel backend.
 
@@ -41,7 +41,7 @@ After installation, run the setup command.
 php artisan setup:package:devices
 ```
 
-Running the command will, 
+Running the command will,
 
 - Create the migration
 - Create the seeder
