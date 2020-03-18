@@ -1,4 +1,4 @@
-# Device-Authentication Handling Package for Laravel 5.7+ / 6.0
+# Device-Authentication Handling Package for Laravel 5.7+ / 6.0 / 7.0
 
 This adds device authentication handling capability on a laravel backend.
 
