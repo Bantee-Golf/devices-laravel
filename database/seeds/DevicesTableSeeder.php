@@ -32,6 +32,13 @@ class DevicesTableSeeder extends Seeder
 				'user_id' => 3,
 				'access_token' => Device::newUniqueToken('access_token'),
 			],
+			[
+				'device_id' => 92388529239334,
+				'device_type' => 'android',
+				'device_push_token' => '5005005005002441',
+				'user_id' => 4,
+				'access_token' => Device::newUniqueToken('access_token'),
+			],
 		];
 
 		$this->seedButDontCreateDuplicates($data, Device::class, 'device_id', 'device_id');
