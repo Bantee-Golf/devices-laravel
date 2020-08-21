@@ -14,7 +14,7 @@ class Device extends Model
 	use CreatesUniqueTokens;
 	use SearchableTrait;
 
-	protected $defaultTokenExpiryDays = 90;
+	protected $defaultTokenExpiryDays = config('features.auth.token_expiry_days', 90);
 
 	protected $fillable = [
 		'device_id',
