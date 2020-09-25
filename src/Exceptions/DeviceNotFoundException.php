@@ -1,6 +1,6 @@
 <?php
 
-namespace EMedia\Devices\Auth;
+namespace EMedia\Devices\Exceptions;
 
 
 class DeviceNotFoundException extends \Exception
