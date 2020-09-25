@@ -92,9 +92,9 @@ class DevicesRepository extends BaseRepository
 
 	public function getByIdAndType($deviceId, $deviceType)
 	{
-		return \App\Entities\Devices\Device::where('device_id', $deviceId)
-										   ->where('device_type', $deviceType)
-										   ->first();
+		return Device::where('device_id', $deviceId)
+				->where('device_type', $deviceType)
+				->first();
 	}
 
 	/**
