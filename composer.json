@@ -1,27 +1,7 @@
 {
     "name": "emedia/devices-laravel",
     "description": "Package for device authentication",
-    "type": "project",
-    "repositories": [
-        {
-            "type":"vcs",
-            "url":"git@bitbucket.org:elegantmedia/quickdata-laravel.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:elegantmedia/laravel-helpers.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:elegantmedia/php-helpers.git"
-        }
-    ],
-    "require": {
-        "php": "^7.0",
-        "illuminate/support": "^6.0|^7.0",
-        "illuminate/database": "^6.0|^7.0",
-        "emedia/quick-data-laravel": "^4.0"
-    },
+    "type": "library",
     "license": "proprietary",
     "authors": [
         {
@@ -29,18 +9,62 @@
             "email": "chamalw.emedia@gmail.com"
         }
     ],
-    "autoload": {
-        "psr-4": {
-          "EMedia\\Devices\\": "src/"
-        }
+    "require": {
+        "php": "^7.3",
+        "elegantmedia/php-toolkit": "dev-master",
+        "elegantmedia/oxygen-foundation": "dev-feature/wip-split-controllers",
+        "elegantmedia/laravel-simple-repository": "dev-master"
     },
+	"require-dev": {
+        "orchestra/testbench": "^6.2",
+        "phpunit/phpunit": "^9.3",
+        "squizlabs/php_codesniffer": "^3.5",
+		"emedia/laravel-test-kit": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"EMedia\\Devices\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"App\\": "laravel/app",
+			"Tests\\": "tests/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../PHPToolkit"
+        },
+        {
+            "type": "path",
+            "url": "../LaravelSimpleRepository"
+        },
+        {
+            "type": "path",
+            "url": "../OxygenFoundation"
+        },
+		{
+			"type": "path",
+			"url": "../LaravelTestKit"
+		}
+	],
+	"config": {
+		"sort-packages": true
+	},
+	"scripts": {
+		"test": "phpunit",
+		"check-style": "phpcs src tests",
+		"fix-style": "phpcbf src tests"
+	},
     "extra": {
         "laravel": {
             "providers": [
-                "EMedia\\Devices\\DeviceAuthServiceProvider"
+				"EMedia\\Devices\\DevicesServiceProvider"
             ]
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
