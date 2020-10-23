@@ -9,12 +9,12 @@
         [$pageTitle, null, true]
     ]) }}
 
-    <table class="table table-hover">
+    <table class="table table-hover table-responsive-sm">
         <tbody>
             @foreach ($entity->getShowable() as $field)
                 <tr>
-                    <td>{{ ucwords(reverse_snake_case($field)) }}</td>
-                    <td width="75%">{{ $entity->$field }}</td>
+                    <td>{{ ucwords(\ElegantMedia\PHPToolkit\Text::reverseSnake($field)) }}</td>
+                    <td width="75%" class="text-break">{{ $entity->$field }}</td>
                 </tr>
             @endforeach
         </tbody>

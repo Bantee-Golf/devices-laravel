@@ -35,7 +35,7 @@ class DevicesServiceProvider extends ServiceProvider
 		], 'oxygen::auto-publish');
 
 		// load default views
-		$this->loadViewsFrom(__DIR__ . '/../resources/views', 'devices');
+		$this->loadViewsFrom(__DIR__ . '/../resources/views', 'manage');
 
 		// add vies for manual publishing
 		$this->publishes([
@@ -45,7 +45,7 @@ class DevicesServiceProvider extends ServiceProvider
 
 
 		// $menuItem = (new MenuItem())->setText('Devices')
-		// 							->setResource('manage.devices.index')
+		// 							->setResource('manage.manage.index')
 		// 							->setClass('fas fa-mobile-alt');
 		//
 		// MenuBar::add($menuItem, 'sidebar.manage');

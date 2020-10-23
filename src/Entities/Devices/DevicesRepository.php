@@ -4,9 +4,9 @@
 namespace EMedia\Devices\Entities\Devices;
 
 
-use ElegantMedia\SimpleRepository\SimpleBaseRepository;
+use ElegantMedia\OxygenFoundation\Entities\OxygenRepository;
 
-class DevicesRepository extends SimpleBaseRepository
+class DevicesRepository extends OxygenRepository
 {
 
 	public function __construct(Device $model)
