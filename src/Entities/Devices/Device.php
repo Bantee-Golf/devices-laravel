@@ -4,15 +4,14 @@ namespace EMedia\Devices\Entities\Devices;
 
 
 use Carbon\Carbon;
-use EMedia\Helpers\Database\CreatesUniqueTokens;
-use EMedia\QuickData\Entities\Search\SearchableTrait;
+use ElegantMedia\OxygenFoundation\Database\Eloquent\Traits\CreatesUniqueTokens;
 use Illuminate\Database\Eloquent\Model;
 
 class Device extends Model
 {
 
 	use CreatesUniqueTokens;
-	use SearchableTrait;
+	// use SearchableTrait;
 
 	protected $defaultTokenExpiryDays = 90;
 

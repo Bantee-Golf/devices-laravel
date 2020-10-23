@@ -4,9 +4,9 @@
 namespace EMedia\Devices\Entities\Devices;
 
 
-use EMedia\QuickData\Entities\Repositories\BaseRepository;
+use ElegantMedia\SimpleRepository\SimpleBaseRepository;
 
-class DevicesRepository extends BaseRepository
+class DevicesRepository extends SimpleBaseRepository
 {
 
 	public function __construct(Device $model)
