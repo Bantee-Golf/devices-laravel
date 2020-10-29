@@ -2,13 +2,16 @@
 
 This adds device authentication handling capability on a laravel backend.
 
-#### Version Compatibility
+## Version Compatibility
 
-| Laravel       | Version      |
-| ------------- |:------------:|
-| 7             | 2.x          |
-| 6             | 1.1.x        |
-| 5.7/5.8       | 1.0.x        |
+| Laravel Version   | Package Version   | Branch           |
+| -----------------:| ----------------- |------------------|
+| v8                | 3.x               | master           |
+| v7                | 2.x               | version/v2.x     |
+| v6                | 1.1.x             |                  | 
+| v5.8              | 1.0.x             |                  | 
+
+See [change log for change history](CHANGELOG.md) and compatibility with past versions.
 
 ## Installation Instructions
 
@@ -19,18 +22,6 @@ Add the private repositories in your `composer.json`.
         {
             "type": "vcs",
             "url": "git@bitbucket.org:elegantmedia/devices-laravel.git"
-        },
-        {
-            "type":"vcs",
-            "url":"git@bitbucket.org:elegantmedia/quickdata-laravel.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:elegantmedia/laravel-helpers.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@bitbucket.org:elegantmedia/php-helpers.git"
         }
     ],
 ```
@@ -40,32 +31,31 @@ Add the repository to the the application
 composer require emedia/devices-laravel
 ```
 
-The package will be auto-discovered with Laravel 5.7+
-
 ## Setup
 
-After installation, run the setup command.
+Install the package.
+
 ```
-php artisan setup:package:devices
+php artisan oxygen:devices:install
 ```
 
-Running the command will,
+Then migrate to create the tables and seed the database.
 
-- Create the migration
-- Create the seeder
-- Update the routes file
-
-Then migrate to create the tables
-```
+``` bash
 php artisan migrate
+php artisan db:seed
 ```
 
-Seed the database
-```
-php artisan db:seed --class=DevicesTableSeeder
+## Optional Customisation Steps
+
+``` shell script
+-- Seed the database
+php artisan db:seed --class="Database\Seeders\OxygenExtensions\AutoSeed\DevicesTableSeeder"
+
+-- Publish views
+php artisan vendor:publish --provider="EMedia\Devices\DevicesServiceProvider" --tag=views --force
 ```
 
-Or you can add it to `database/seeds/DatabaseSeeder.php`.
 
 ## Usage
 
@@ -82,14 +72,19 @@ DeviceAuthenticator::discardAccessToken($deviceId, $accessToken = null);
 
 ## Middleware
 
-Use device authentication to validate token as a middleware, add below line to `Http\Kernel.php`. This will check for `access_token` or `token` parameters in the request and if it's present, let it through.
+Use device authentication to validate token as a middleware, add below line to `Http\Kernel.php`. This will check for a valid `x-access-token` in header, and if it's present, let it through.
 
 ```
-'\EMedia\Devices\Middleware\DeviceAuthMiddleware::class,'
+'auth.device' => '\EMedia\Devices\Middleware\AuthorizeDeviceMiddleware::class,'
 ```
 
-## Important Notes
+## Limitations
 
-#### POST/PUT Requests
+- This package will only handle device access tokens. It will not check or validate API keys or API requests.
 
-Due to [Symfony and Laravel limitations](https://github.com/laravel/framework/issues/13457#issuecomment-239451567), you cannot send binary data (such as images) to a PUT endpoint. So either use a POST request with `_method=put` or don't use PUT requests with binary data.
+## Contributing
+
+- Found a bug? Report as an issue and if you can, submit a pull request.
+- Please see [CONTRIBUTING](CONTRIBUTING.md) and for details.
+
+Copyright (c) 2020 Elegant Media.

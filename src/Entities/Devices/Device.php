@@ -2,17 +2,16 @@
 
 namespace EMedia\Devices\Entities\Devices;
 
-
 use Carbon\Carbon;
-use EMedia\Helpers\Database\CreatesUniqueTokens;
-use EMedia\QuickData\Entities\Search\SearchableTrait;
+use ElegantMedia\OxygenFoundation\Database\Eloquent\Traits\CreatesUniqueTokens;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Device extends Model
 {
 
 	use CreatesUniqueTokens;
-	use SearchableTrait;
+	use Searchable;
 
 	protected $defaultTokenExpiryDays = 90;
 
@@ -24,11 +23,14 @@ class Device extends Model
 		'latest_ip_address',
 	];
 
-	protected $searchable = [
-		'device_id',
-		'device_push_token',
-		'latest_ip_address',
-	];
+	public function getSearchableFields(): array
+	{
+		return [
+			'device_id',
+			'device_push_token',
+			'latest_ip_address',
+		];
+	}
 
 	protected $dates = [
 		'access_token_expires_at',
@@ -79,7 +81,6 @@ class Device extends Model
 	 *
 	 * Refresh the current access token
 	 *
-	 * @throws \EMedia\Helpers\Exceptions\Auth\TokenGenerationException
 	 */
 	public function refreshAccessToken()
 	{
@@ -130,5 +131,4 @@ class Device extends Model
 
 		return $this;
 	}
-
 }

@@ -1,3 +1,9 @@
-.idea
-/vendor
+/vendor/
+.idea/
+node_modules/
+test_screenshots/
+build/
+LOCAL.md
+.DS_Store
 composer.lock
+.phpunit.result.cache

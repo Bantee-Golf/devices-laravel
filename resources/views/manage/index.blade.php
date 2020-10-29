@@ -43,7 +43,7 @@
                 <form action="{{ entity_resource_path() . '/' . $item->id }}" method="POST" class="form form-inline js-confirm">
                     {{ method_field('delete') }}
                     {{ csrf_field() }}
-                    <button class="btn btn-danger"><em class="fa fa-times"></em> Delete</button>
+                    <button class="btn btn-danger btn-sm"><em class="fa fa-times"></em> Delete</button>
                 </form>
             </td>
         </tr>

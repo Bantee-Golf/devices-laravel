@@ -1,13 +1,14 @@
 <?php
+namespace Database\Seeders\OxygenExtensions\AutoSeed;
 
-
+use ElegantMedia\OxygenFoundation\Database\Seeders\SeedWithoutDuplicates;
 use EMedia\Devices\Entities\Devices\Device;
 use Illuminate\Database\Seeder;
 
 class DevicesTableSeeder extends Seeder
 {
 
-	use \EMedia\QuickData\Database\Seeds\Traits\SeedsWithoutDuplicates;
+	use SeedWithoutDuplicates;
 
 	public function run()
 	{
@@ -41,7 +42,7 @@ class DevicesTableSeeder extends Seeder
 			],
 		];
 
-		$this->seedButDontCreateDuplicates($data, Device::class, 'device_id', 'device_id');
+		$this->seedWithoutDuplicates($data, Device::class, 'device_id', 'device_id');
 	}
 
 }

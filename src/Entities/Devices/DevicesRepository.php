@@ -3,10 +3,9 @@
 
 namespace EMedia\Devices\Entities\Devices;
 
+use ElegantMedia\OxygenFoundation\Entities\OxygenRepository;
 
-use EMedia\QuickData\Entities\Repositories\BaseRepository;
-
-class DevicesRepository extends BaseRepository
+class DevicesRepository extends OxygenRepository
 {
 
 	public function __construct(Device $model)
@@ -42,7 +41,9 @@ class DevicesRepository extends BaseRepository
 			if ($userID) {
 				$device->user()->associate($userID);
 			}
-			if ($request) $device->latest_ip_address = request()->ip();
+			if ($request) {
+				$device->latest_ip_address = request()->ip();
+			}
 			$device->refreshAccessToken();
 			return $device;
 		}
@@ -51,7 +52,9 @@ class DevicesRepository extends BaseRepository
 			$data['user_id'] = $userID;
 		}
 
-		if ($request) $data['latest_ip_address'] = request()->ip();
+		if ($request) {
+			$data['latest_ip_address'] = request()->ip();
+		}
 
 		return $this->create($data);
 	}
@@ -141,5 +144,4 @@ class DevicesRepository extends BaseRepository
 			$device->delete();
 		}
 	}
-
 }
