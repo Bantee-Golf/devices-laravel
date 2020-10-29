@@ -3,7 +3,7 @@
 ## Version Compatibility
 
 | Laravel Version   | Package Version   | Branch           |
-| -----------------:| ----------------- |------------------|
+| ----------------- | ----------------- | ---------------- |
 | v8                | 3.x               | master           |
 | v7                | 2.x               | version/v2.x     |
 | v6                | 1.1.x             |                  | 
