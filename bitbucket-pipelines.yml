@@ -1,0 +1,11 @@
+image: emediaorg/php:0.0.1
+
+pipelines:
+    default:
+        - step:
+            name: Tests
+            caches:
+                - composer
+            script:
+                - composer install
+                - vendor/bin/phpunit
