@@ -6,12 +6,12 @@ namespace EMedia\Devices\Commands;
 use ElegantMedia\OxygenFoundation\Console\Commands\ExtensionInstallCommand;
 use EMedia\Devices\DevicesServiceProvider;
 
-class OxygenDevicesExtInstallCommand extends ExtensionInstallCommand
+class OxygenDevicesInstallCommand extends ExtensionInstallCommand
 {
 
-	protected $signature = 'oxygen:ext:devices:install';
+	protected $signature = 'oxygen:devices:install';
 
-	protected $description = 'Setup the Devices package';
+	protected $description = 'Setup the Devices Extension';
 
 	public function getExtensionServiceProvider(): string
 	{

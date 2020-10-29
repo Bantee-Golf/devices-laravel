@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-
 use Carbon\Carbon;
 use EMedia\Devices\Entities\Devices\Device;
 
@@ -28,6 +27,8 @@ class DeviceAuthenticatorTest extends \Tests\TestCase
 
 	public function testAuthenticatorCanValidateTokens(): void
 	{
+		$this->mockScoutKeywordEngine();
+
 		// seed data
 		$this->loadLaravelMigrations();
 		$this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
@@ -56,5 +57,4 @@ class DeviceAuthenticatorTest extends \Tests\TestCase
 
 		$this->assertEquals($token, $device->access_token);
 	}
-
 }

@@ -81,7 +81,6 @@ class Device extends Model
 	 *
 	 * Refresh the current access token
 	 *
-	 * @throws \EMedia\Helpers\Exceptions\Auth\TokenGenerationException
 	 */
 	public function refreshAccessToken()
 	{

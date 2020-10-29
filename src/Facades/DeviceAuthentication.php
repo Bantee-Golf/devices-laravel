@@ -2,7 +2,6 @@
 
 namespace EMedia\DeviceAuthentication\Facades;
 
-
 use Illuminate\Support\Facades\Facade;
 
 class DeviceAuthentication extends Facade
@@ -17,4 +16,3 @@ class DeviceAuthentication extends Facade
 		return 'emedia.devices.auth';
 	}
 }
-

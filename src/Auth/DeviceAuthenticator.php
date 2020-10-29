@@ -5,8 +5,7 @@ namespace EMedia\Devices\Auth;
 use App\User;
 use EMedia\Devices\Entities\Devices\Device;
 use EMedia\Devices\Entities\Devices\DevicesRepository;
-use EMedia\Helpers\Exceptions\Auth\UserNotFoundException;
-
+use ElegantMedia\OxygenFoundation\Exceptions\UserNotFoundException;
 
 class DeviceAuthenticator
 {
@@ -34,7 +33,9 @@ class DeviceAuthenticator
 	{
 		$device = Device::where('user_id', $userId)->active()->first();
 
-		if ($device) return $device->access_token;
+		if ($device) {
+			return $device->access_token;
+		}
 
 		return null;
 	}
@@ -80,27 +81,27 @@ class DeviceAuthenticator
 	 * @return int
 	 */
 	public function getTokenByDeviceByUser($deviceId, $userId)
-    {
-        $accessToken = Device::where('device_id', $deviceId)
-        			   ->active()
-			  		   ->where('user_id', $userId)
-			  		   ->first();
+	{
+		$accessToken = Device::where('device_id', $deviceId)
+					   ->active()
+					   ->where('user_id', $userId)
+					   ->first();
 
 		return (empty($accessToken))? null: $accessToken->access_token;
-    }
+	}
 
 
-    public function setToken($deviceId, $deviceType, $devicePushToken, $userId)
-    {
-    	$device = new Device([
-    		'device_id' => $deviceId,
-    		'device_type' => $deviceType,
-    		'device_push_token' => $devicePushToken,
-    		'user_id' => $userId
-    	]);
+	public function setToken($deviceId, $deviceType, $devicePushToken, $userId)
+	{
+		$device = new Device([
+			'device_id' => $deviceId,
+			'device_type' => $deviceType,
+			'device_push_token' => $devicePushToken,
+			'user_id' => $userId
+		]);
 
-        return $device->token;
-    }
+		return $device->token;
+	}
 
 
 	/**
@@ -125,23 +126,24 @@ class DeviceAuthenticator
 	 * @return bool
 	 */
 	public static function validateToken($accessToken)
-    {
-        $accessToken = Device::where('access_token', $accessToken)->active()->first();
+	{
+		$accessToken = Device::where('access_token', $accessToken)->active()->first();
 
-        return ($accessToken)? true: false;
-    }
+		return ($accessToken)? true: false;
+	}
 
 
-    public function deleteByToken($deviceId, $accessToken = null) {
-    	if (!$accessToken) {
+	public function deleteByToken($deviceId, $accessToken = null)
+	{
+		if (!$accessToken) {
 			//delete all the tokens associated with device
 			$this->devicesRepo->deleteByToken($accessToken);
-    	} else {
-    		$this->devicesRepo->deleteByDeviceId($deviceId);
-    	}
+		} else {
+			$this->devicesRepo->deleteByDeviceId($deviceId);
+		}
 
-        return true;
-    }
+		return true;
+	}
 
 	/**
 	 *
@@ -170,5 +172,4 @@ class DeviceAuthenticator
 			'access_token_expires_at' => null,
 		]);
 	}
-
 }

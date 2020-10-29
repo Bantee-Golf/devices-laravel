@@ -28,9 +28,10 @@ class AuthorizeDeviceMiddleware
 		$accessToken = $request->header($tokenKey);
 
 		if (!DeviceAuthenticator::validateToken($accessToken)) {
-			return response()->apiErrorUnauthorized('Invalid access token given. Try logging out and logging-in again.');
+			return response()
+				->apiErrorUnauthorized('Invalid access token given. Try logging out and logging-in again.');
 		}
 
 		return $next($request);
-    }
+	}
 }
