@@ -48,11 +48,11 @@ php artisan db:seed
 
 ## Optional Customisation Steps
 
-``` shell script
--- Seed the database
+```
+// Seed the database
 php artisan db:seed --class="Database\Seeders\OxygenExtensions\AutoSeed\DevicesTableSeeder"
 
--- Publish views
+// Publish views
 php artisan vendor:publish --provider="EMedia\Devices\DevicesServiceProvider" --tag=views --force
 ```
 
