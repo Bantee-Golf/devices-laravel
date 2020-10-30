@@ -26,7 +26,7 @@ Add the private repositories in your `composer.json`.
     ],
 ```
 
-Add the repository to the the application
+Add the repository to the application
 ```
 composer require emedia/devices-laravel
 ```
