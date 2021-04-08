@@ -18,7 +18,7 @@ class CreateDevicesTable extends Migration
 			$table->string('device_id')->nullable();
 			$table->string('device_type')->nullable();
 			$table->text('device_push_token')->nullable();
-			$table->string('access_token');
+			$table->string('access_token')->nullable();
 			$table->dateTime('access_token_expires_at')->nullable();
 			$table->string('latest_ip_address')->nullable();
 			$table->unique(['device_id', 'device_type']);
