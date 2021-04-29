@@ -6,6 +6,7 @@ use App\User;
 use EMedia\Devices\Entities\Devices\Device;
 use EMedia\Devices\Entities\Devices\DevicesRepository;
 use ElegantMedia\OxygenFoundation\Exceptions\UserNotFoundException;
+use EMedia\Devices\Exceptions\DeviceNotFoundException;
 
 class DeviceAuthenticator
 {
