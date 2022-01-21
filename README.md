@@ -6,7 +6,8 @@ This adds device authentication handling capability on a laravel backend.
 
 | Laravel Version   | Package Version   | Branch           |
 | ----------------- | ----------------- | ---------------- |
-| v8                | 3.x               | master           |
+| v9                | 4.x               | master           |
+| v8                | 3.x               | version/v3.x     |
 | v7                | 2.x               | version/v2.x     |
 | v6                | 1.1.x             |                  | 
 | v5.8              | 1.0.x             |                  | 
@@ -87,4 +88,4 @@ Use device authentication to validate token as a middleware, add below line to `
 - Found a bug? Report as an issue and if you can, submit a pull request.
 - Please see [CONTRIBUTING](CONTRIBUTING.md) and for details.
 
-Copyright (c) 2020 Elegant Media.
+Copyright (c) Elegant Media.
