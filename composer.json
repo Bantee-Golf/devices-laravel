@@ -10,15 +10,14 @@
 		}
     ],
     "require": {
-        "php": "^8.0",
-        "elegantmedia/oxygen-foundation": "^2.0"
+        "php": "^8.1",
+        "elegantmedia/oxygen-foundation": "^3.0"
     },
 	"require-dev": {
-        "emedia/laravel-test-kit": "^2.0",
-        "mockery/mockery": "^1.4",
-        "orchestra/testbench": "^7.0",
-        "phpunit/phpunit": "^9.3",
-        "squizlabs/php_codesniffer": "^3.5"
+        "mockery/mockery": "^1.5",
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0",
+        "squizlabs/php_codesniffer": "^3.7"
     },
 	"autoload": {
 		"psr-4": {
@@ -37,12 +36,6 @@
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
-    "repositories": [
-		{
-			"type": "vcs",
-			"url": "git@bitbucket.org:elegantmedia/laravel-test-kit.git"
-		}
-	],
 	"config": {
 		"sort-packages": true
 	},

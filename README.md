@@ -4,13 +4,14 @@ This adds device authentication handling capability on a laravel backend.
 
 ## Version Compatibility
 
-| Laravel Version   | Package Version   | Branch           |
-| ----------------- | ----------------- | ---------------- |
-| v9                | 4.x               | master           |
-| v8                | 3.x               | version/v3.x     |
-| v7                | 2.x               | version/v2.x     |
-| v6                | 1.1.x             |                  | 
-| v5.8              | 1.0.x             |                  | 
+| Laravel Version | Package Version | Branch       |
+|-----------------|-----------------|--------------|
+| v10             | 5.x             | 5.x          |
+| v9              | 4.x             | 4.x          |
+| v8              | 3.x             | version/v3.x |
+| v7              | 2.x             | version/v2.x |
+| v6              | 1.1.x           |              | 
+| v5.8            | 1.0.x           |              | 
 
 See [change log for change history](CHANGELOG.md) and compatibility with past versions.
 

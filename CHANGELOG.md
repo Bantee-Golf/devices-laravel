@@ -1,14 +1,8 @@
 # Change Log
 
-## Version Compatibility
-
-| Laravel Version   | Package Version   | Branch           |
-| ----------------- | ----------------- | ---------------- |
-| v9                | 4.x               | master           |
-| v8                | 3.x               | version/v3.x     |
-| v7                | 2.x               | version/v2.x     |
-| v6                | 1.1.x             |                  | 
-| v5.8              | 1.0.x             |                  | 
+## v5.0
+- Support for Laravel 10
+- Drop Php 8.0 Support
 
 ## v4.x
 - Support for Laravel 9
